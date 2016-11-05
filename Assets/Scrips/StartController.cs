@@ -9,6 +9,7 @@ public class StartController : MonoBehaviour
     public TweenScale loginPanel;
     public TweenScale registerPanel;
     public TweenScale serverPanel;
+    public TweenPosition  characterDisPlayPanel;
 
 
     public UIInput UserNameInputLogin;
@@ -20,6 +21,7 @@ public class StartController : MonoBehaviour
     public GameObject redServer;
     public GameObject greenServer;
     public GameObject currentServer;
+
 
     private  float waitSec =0.4f;
 
@@ -75,7 +77,22 @@ public class StartController : MonoBehaviour
         
     }
 
-    
+
+
+    public void OnEnterGameBtnClick()
+    {
+        //TODO
+        //连接服务器
+
+        //切换到角色选择界面
+        startPanel.PlayForward();
+        StartCoroutine(HiderObj(startPanel.gameObject));
+
+        characterDisPlayPanel.gameObject.SetActive(true);
+        characterDisPlayPanel.PlayForward();
+        
+    }
+
     public void OnServerSelected(GameObject go)
     {
         sp = go.GetComponent<ServerProperty>();

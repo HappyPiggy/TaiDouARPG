@@ -22,6 +22,8 @@ public class ServerProperty : MonoBehaviour
     public int count   = 100;
 
 
+
+    //按钮被按时候自动调用
     public void OnPress(bool isPress)
     {
         if (!isPress)
