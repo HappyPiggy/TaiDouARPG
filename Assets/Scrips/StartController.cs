@@ -22,12 +22,24 @@ public class StartController : MonoBehaviour
     public GameObject greenServer;
     public GameObject currentServer;
 
+    public GameObject[] characterArray;
+
 
     private  float waitSec =0.4f;
 
     private static string userName;
     private static string userPwd;
     private static ServerProperty sp;
+    private GameObject characterSelected;
+
+    public static StartController _instance;
+
+   
+
+    void Awake()
+    {
+        _instance = this;
+    }
 
 
     void Start()
@@ -78,6 +90,26 @@ public class StartController : MonoBehaviour
     }
 
 
+
+    public void OnCharacterSelected(GameObject go)
+    {
+
+        //TODO
+        //ScaleTo用法不对
+
+
+        //iTween.ScaleFrom(go, new Vector3(1.2f, 1.2f, 1.2f), 0.5f);
+        //iTween.ScaleTo(go, UnityEngine.Vector3 * (transform.localScale , new Vector3(1.5f, 1.5f, 1.5f)), 0.5f);
+       // print(go.transform.localScale);
+        iTween.ScaleTo(go, go.transform.localScale * 1.2f, 0.5f);
+        if (characterSelected != null)
+        {
+           // print("123");
+
+            iTween.ScaleTo(characterSelected, characterSelected.transform.localScale, 0.5f);
+        }
+        characterSelected = go;
+    }
 
     public void OnEnterGameBtnClick()
     {
