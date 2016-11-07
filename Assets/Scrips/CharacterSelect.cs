@@ -9,7 +9,7 @@ public class CharacterSelect : MonoBehaviour {
     {
         if (!isPress)
         {
-            StartController._instance.OnCharacterSelected(gameObject);
+            StartController._instance.OnCharacterSelected(transform.parent.gameObject);
         }
     }
 }

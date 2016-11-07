@@ -10,12 +10,16 @@ public class StartController : MonoBehaviour
     public TweenScale registerPanel;
     public TweenScale serverPanel;
     public TweenPosition  characterDisPlayPanel;
+    public TweenPosition characterSelectPanel;
 
 
     public UIInput UserNameInputLogin;
     public UIInput UserPwdInputLogin;
     public UILabel UserNameLabelStart;
     public UILabel ServerLabelStart;
+    public UILabel CharacterNameLabelCP;
+    public UILabel CharacterLvLabelCP;
+    public UIInput inputNameCSP;
 
     public UIGrid serverListGrid;
     public GameObject redServer;
@@ -23,6 +27,9 @@ public class StartController : MonoBehaviour
     public GameObject currentServer;
 
     public GameObject[] characterArray;
+    public GameObject[] characterDisplayArray;
+
+    public Transform ModelPos;
 
 
     private  float waitSec =0.4f;
@@ -30,7 +37,7 @@ public class StartController : MonoBehaviour
     private static string userName;
     private static string userPwd;
     private static ServerProperty sp;
-    private GameObject characterSelected;
+    private GameObject currentCharacter;
 
     public static StartController _instance;
 
@@ -89,26 +96,79 @@ public class StartController : MonoBehaviour
         
     }
 
+    public void OnChangeCharacterBtnClick()
+    {
+        characterDisPlayPanel.PlayReverse();
+        StartCoroutine(HiderObj(characterDisPlayPanel.gameObject));
+
+        characterSelectPanel.gameObject.SetActive(true);
+        characterSelectPanel.PlayForward();
+    }
+
+    public void OnReturnBtnCharacterClick()
+    {
+
+
+        characterSelectPanel.PlayReverse();
+        StartCoroutine(HiderObj(characterSelectPanel.gameObject));
+
+        characterDisPlayPanel.gameObject.SetActive(true);
+        characterDisPlayPanel.PlayForward();
+    }
+
+    public void OnSureBtnCharacterClick()
+    {
+        //TODO
+        //服务器验证姓名
+        //验证是否选择了角色
+
+
+        //记录姓名 等级 人物模型
+        CharacterNameLabelCP.text = inputNameCSP.value;
+        CharacterLvLabelCP.text = "lv.1";
+
+       for (int i = 0; i < characterArray.Length; i++)
+        {
+          
+           // print(currentCharacter);
+           // print(characterArray[1]);
+          if (currentCharacter == characterArray[i])
+            {
+               // print("123");
+                //删除人物界面原有人物模型
+                Destroy(ModelPos.GetComponentInChildren<Animation>().gameObject);
+                //实例化人物模型到 人物显示界面
+                GameObject go = Instantiate(characterDisplayArray[i], Vector3.zero, Quaternion.identity) as GameObject;
+                go.transform.SetParent(ModelPos);
+                go.transform.localPosition=Vector3.zero;
+                go.transform.localRotation=Quaternion.identity;
+                go.transform.localScale=Vector3.one;
+
+               break;
+
+           }
+
+      }
+
+
+
+        //切换到人物显示界面
+        OnReturnBtnCharacterClick();
+    }
 
 
     public void OnCharacterSelected(GameObject go)
     {
-
-        //TODO
-        //ScaleTo用法不对
-
-
-        //iTween.ScaleFrom(go, new Vector3(1.2f, 1.2f, 1.2f), 0.5f);
-        //iTween.ScaleTo(go, UnityEngine.Vector3 * (transform.localScale , new Vector3(1.5f, 1.5f, 1.5f)), 0.5f);
-       // print(go.transform.localScale);
-        iTween.ScaleTo(go, go.transform.localScale * 1.2f, 0.5f);
-        if (characterSelected != null)
+        if(go==currentCharacter)
+            return;
+    
+        iTween.ScaleTo(go, new Vector3(1.2f,1.2f,1.2f), 0.5f);
+        if (currentCharacter != null)
         {
-           // print("123");
 
-            iTween.ScaleTo(characterSelected, characterSelected.transform.localScale, 0.5f);
+            iTween.ScaleTo(currentCharacter, new Vector3(1f, 1f, 1f), 0.5f);
         }
-        characterSelected = go;
+        currentCharacter = go;
     }
 
     public void OnEnterGameBtnClick()
