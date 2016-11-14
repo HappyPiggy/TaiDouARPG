@@ -161,4 +161,10 @@ public class PlayerInfo : MonoBehaviour {
         OnPlayerInfoChanged( InfoType.All );
     }
 
+    public void ChangeName(string newname)
+    {
+        Name = newname;
+        OnPlayerInfoChanged(InfoType.Name);
+    }
+
 }

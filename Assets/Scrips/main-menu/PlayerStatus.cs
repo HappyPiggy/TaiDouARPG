@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStatus : MonoBehaviour {
+public class PlayerStatus : MonoBehaviour
+{
+
+    public static PlayerStatus _instance;
 
     private UISprite headSprite;
     private UILabel levelLabel;
@@ -17,8 +20,25 @@ public class PlayerStatus : MonoBehaviour {
     private UILabel toughenLabel;
     private UILabel toughenRestorePartLabel;
     private UILabel toughenRestoreAllLabel;
+    private TweenPosition playStatusPanel;
+    private UIButton CloseButton;
 
-    void Awake() {
+    private UIButton changeNameButton;
+    private GameObject changeNamePanel;
+    private UIInput nameInput;
+    private UIButton sureButton;
+    private UIButton cancleButton;
+
+
+
+    void Awake()
+    {
+        _instance = this;
+        changeNamePanel = transform.Find("ChangeNameBg").gameObject;
+        changeNameButton = transform.Find("ChangeNameBtn").GetComponent<UIButton>();
+        sureButton = transform.Find("ChangeNameBg/SureBtn").GetComponent<UIButton>();
+        cancleButton = transform.Find("ChangeNameBg/CancleBtn").GetComponent<UIButton>();
+        nameInput = transform.Find("ChangeNameBg/NameInput").GetComponent<UIInput>();
         headSprite = transform.Find("HeadSprite").GetComponent<UISprite>();
         levelLabel = transform.Find("LevelLabel").GetComponent<UILabel>();
         nameLabel = transform.Find("NameLabel").GetComponent<UILabel>();
@@ -33,8 +53,24 @@ public class PlayerStatus : MonoBehaviour {
         toughenLabel = transform.Find("ToughenLabel/NumLabel").GetComponent<UILabel>();
         toughenRestorePartLabel = transform.Find("ToughenLabel/RestorePartTime").GetComponent<UILabel>();
         toughenRestoreAllLabel = transform.Find("ToughenLabel/RestoreAllTime").GetComponent<UILabel>();
+        CloseButton = transform.Find("CloseBtn").GetComponent<UIButton>();
+        playStatusPanel = GetComponent<TweenPosition>();
+
+        changeNamePanel.SetActive(false);
 
         PlayerInfo._instance.OnPlayerInfoChanged += this.OnPlayerInfoChanged;
+
+        EventDelegate ed = new EventDelegate(this, "Hide");
+        CloseButton.onClick.Add(ed);
+
+        EventDelegate ed2 = new EventDelegate(this, "OnChangeNameBtnClick");
+        changeNameButton.onClick.Add(ed2);
+
+        EventDelegate ed3 = new EventDelegate(this, "OnSureBtnClick");
+        sureButton.onClick.Add(ed3);
+
+        EventDelegate ed4 = new EventDelegate(this, "OnCancleBtnClick");
+        cancleButton.onClick.Add(ed4);
     }
     void Update() {
         UpdateEnergyAndToughenShow();//更新体力和历练恢复时间的计时器
@@ -101,5 +137,37 @@ public class PlayerStatus : MonoBehaviour {
             string minutesStr = minutes <= 9 ? "0" + minutes : minutes.ToString();
             toughenRestoreAllLabel.text = hoursStr + ":" + minutesStr + ":" + str;
         }
+    }
+
+    public void Show()
+    {
+        playStatusPanel.PlayForward();
+    }
+
+    void Hide()
+    {
+        playStatusPanel.PlayReverse();
+    }
+
+    void OnChangeNameBtnClick()
+    {
+        changeNamePanel.SetActive(true);
+    }
+
+    void OnSureBtnClick()
+    {
+        //TODO
+        //服务器验证姓名是否有一致的
+
+        //在playerinfo中修改
+        PlayerInfo._instance.ChangeName(nameInput.value);
+        changeNamePanel.SetActive(false);
+
+
+    }
+
+    void OnCancleBtnClick()
+    {
+        changeNamePanel.SetActive(false);
     }
 }
