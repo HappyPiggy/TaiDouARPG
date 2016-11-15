@@ -181,6 +181,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scrips\main-menu\GameController.cs" />
+     <Compile Include="Assets\Scrips\main-menu\Inventory.cs" />
      <Compile Include="Assets\Scrips\main-menu\PlayerBar.cs" />
      <Compile Include="Assets\Scrips\main-menu\PlayerInfo.cs" />
      <Compile Include="Assets\Scrips\main-menu\PlayerStatus.cs" />
