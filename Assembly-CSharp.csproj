@@ -182,6 +182,8 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scrips\main-menu\GameController.cs" />
      <Compile Include="Assets\Scrips\main-menu\Inventory.cs" />
+     <Compile Include="Assets\Scrips\main-menu\InventoryItem.cs" />
+     <Compile Include="Assets\Scrips\main-menu\InventoryManager.cs" />
      <Compile Include="Assets\Scrips\main-menu\PlayerBar.cs" />
      <Compile Include="Assets\Scrips\main-menu\PlayerInfo.cs" />
      <Compile Include="Assets\Scrips\main-menu\PlayerStatus.cs" />
@@ -211,6 +213,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+     <None Include="Assets\Scrips\main-menu\InventoryList.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
