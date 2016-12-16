@@ -1,0 +1,654 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"el",
+				"elif\tkeyword"
+			],
+			[
+				"cals",
+				"class\tkeyword"
+			],
+			[
+				"cal",
+				"calc2\tfunction"
+			],
+			[
+				"cla",
+				"class\tkeyword"
+			],
+			[
+				"str",
+				"Str_Shift\tclass"
+			],
+			[
+				"ns",
+				"Nstr"
+			],
+			[
+				"is",
+				"isinstance\tfunction"
+			],
+			[
+				"class",
+				"class\tkeyword"
+			],
+			[
+				"a",
+				"a"
+			],
+			[
+				"filen",
+				"file_name\tparam"
+			],
+			[
+				"__ne",
+				"__new__\tfunction"
+			],
+			[
+				"u",
+				"user32"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"de",
+				"defs\tMethod"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "// 1Dlg.cpp : implementation file\n//\n\n#include \"stdafx.h\"\n#include \"1.h\"\n#include \"1Dlg.h\"\n#include <math.h>\n#include<windows.h>\n\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <locale.h>\n\n\n#ifdef _DEBUG\n#define new DEBUG_NEW\n#undef THIS_FILE\nstatic char THIS_FILE[] = __FILE__;\n#endif\n#define M_PI        3.14159265358979323846\n/////////////////////////////////////////////////////////////////////////////\n// CAboutDlg dialog used for App About\n\nclass CAboutDlg : public CDialog\n{\npublic:\n\tCAboutDlg();\n\n// Dialog Data\n\t//{{AFX_DATA(CAboutDlg)\n\tenum { IDD = IDD_ABOUTBOX };\n\t//}}AFX_DATA\n\n\t// ClassWizard generated virtual function overrides\n\t//{{AFX_VIRTUAL(CAboutDlg)\n\tprotected:\n\tvirtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support\n\t//}}AFX_VIRTUAL\n\n// Implementation\nprotected:\n\t//{{AFX_MSG(CAboutDlg)\n\t//}}AFX_MSG\n\tDECLARE_MESSAGE_MAP()\n};\n\nCAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD)\n{\n\t//{{AFX_DATA_INIT(CAboutDlg)\n\t//}}AFX_DATA_INIT\n}\n\nvoid CAboutDlg::DoDataExchange(CDataExchange* pDX)\n{\n\tCDialog::DoDataExchange(pDX);\n\t//{{AFX_DATA_MAP(CAboutDlg)\n\t//}}AFX_DATA_MAP\n}\n\nBEGIN_MESSAGE_MAP(CAboutDlg, CDialog)\n\t//{{AFX_MSG_MAP(CAboutDlg)\n\t\t// No message handlers\n\t//}}AFX_MSG_MAP\nEND_MESSAGE_MAP()\n\n/////////////////////////////////////////////////////////////////////////////\n// CMy1Dlg dialog\n\nCMy1Dlg::CMy1Dlg(CWnd* pParent /*=NULL*/)\n\t: CDialog(CMy1Dlg::IDD, pParent)\n{\n\t//{{AFX_DATA_INIT(CMy1Dlg)\n\tm_result = 0.0;\n\tm_var1 = _T(\"\");\n\tm_var2 = _T(\"\");\n\tisfirst=true;\n\tcurrent_dec=10; //默认十进制\n\n\t\n\t//}}AFX_DATA_INIT\n\t// Note that LoadIcon does not require a subsequent DestroyIcon in Win32\n\tm_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);\n}\n\nvoid CMy1Dlg::DoDataExchange(CDataExchange* pDX)\n{\n\tCDialog::DoDataExchange(pDX);\n\t//{{AFX_DATA_MAP(CMy1Dlg)\n\tDDX_Text(pDX, IDC_EDIT3, m_result);\n\tDDX_Text(pDX, IDC_EDIT1, m_var1);\n\tDDX_Text(pDX, IDC_EDIT2, m_var2);\n\t//}}AFX_DATA_MAP\n}\n\nBEGIN_MESSAGE_MAP(CMy1Dlg, CDialog)\n\t//{{AFX_MSG_MAP(CMy1Dlg)\n\tON_WM_SYSCOMMAND()\n\tON_WM_PAINT()\n\tON_WM_QUERYDRAGICON()\n\tON_BN_CLICKED(IDC_BUTTON_1, OnButton1)\n\tON_BN_CLICKED(IDC_BUTTON_2, OnButton2)\n\tON_BN_CLICKED(IDC_BUTTON_plus, OnBUTTONplus)\n\tON_BN_CLICKED(IDC_BUTTON_3, OnButton3)\n\tON_BN_CLICKED(IDC_BUTTON_4, OnButton4)\n\tON_BN_CLICKED(IDC_BUTTON_5, OnButton5)\n\tON_BN_CLICKED(IDC_BUTTON_6, OnButton6)\n\tON_BN_CLICKED(IDC_BUTTON_7, OnButton7)\n\tON_BN_CLICKED(IDC_BUTTON_8, OnButton8)\n\tON_BN_CLICKED(IDC_BUTTON_9, OnButton9)\n\tON_BN_CLICKED(IDC_BUTTON_0, OnButton0)\n\tON_BN_CLICKED(IDC_BUTTON_point, OnBUTTONpoint)\n\tON_BN_CLICKED(IDC_BUTTON_equal, OnBUTTONequal)\n\tON_BN_CLICKED(IDC_BUTTON_minus, OnBUTTONminus)\n\tON_BN_CLICKED(IDC_BUTTON_multiply, OnBUTTONmultiply)\n\tON_BN_CLICKED(IDC_BUTTON_divide, OnBUTTONdivide)\n\tON_BN_CLICKED(IDC_BUTTON_pf, OnBUTTONpf)\n\tON_BN_CLICKED(IDC_BUTTON_sin, OnBUTTONsin)\n\tON_BN_CLICKED(IDC_BUTTON_cos, OnBUTTONcos)\n\tON_BN_CLICKED(IDC_BUTTON_tan, OnBUTTONtan)\n\tON_BN_CLICKED(IDC_BUTTON_c, OnBUTTONc)\n\tON_BN_CLICKED(IDC_BUTTON_sqrt, OnBUTTONsqrt)\n\tON_BN_CLICKED(IDC_RADIO_B, OnRadioB)\n\tON_BN_CLICKED(IDC_RADIO_D, OnRadioD)\n\tON_BN_CLICKED(IDC_RADIO_O, OnRadioO)\n\tON_BN_CLICKED(IDC_RADIO_H, OnRadioH)\n\t//}}AFX_MSG_MAP\nEND_MESSAGE_MAP()\n\n/////////////////////////////////////////////////////////////////////////////\n// CMy1Dlg message handlers\n\nBOOL CMy1Dlg::OnInitDialog()\n{\n\tCDialog::OnInitDialog();\n\n\t// Add \"About...\" menu item to system menu.\n\n\t// IDM_ABOUTBOX must be in the system command range.\n\tASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);\n\tASSERT(IDM_ABOUTBOX < 0xF000);\n\n\tCMenu* pSysMenu = GetSystemMenu(FALSE);\n\tif (pSysMenu != NULL)\n\t{\n\t\tCString strAboutMenu;\n\t\tstrAboutMenu.LoadString(IDS_ABOUTBOX);\n\t\tif (!strAboutMenu.IsEmpty())\n\t\t{\n\t\t\tpSysMenu->AppendMenu(MF_SEPARATOR);\n\t\t\tpSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);\n\t\t}\n\t}\n\n\t// Set the icon for this dialog.  The framework does this automatically\n\t//  when the application's main window is not a dialog\n\tSetIcon(m_hIcon, TRUE);\t\t\t// Set big icon\n\tSetIcon(m_hIcon, FALSE);\t\t// Set small icon\n\t\n\t// TODO: Add extra initialization here\n\n\t//默认选中十进制\n\tCButton* radio=(CButton*)GetDlgItem(IDC_RADIO_D);\n\tradio->SetCheck(1);\n\n\n\n\n\n\t\n\treturn TRUE;  // return TRUE  unless you set the focus to a control\n}\n\nvoid CMy1Dlg::OnSysCommand(UINT nID, LPARAM lParam)\n{\n\tif ((nID & 0xFFF0) == IDM_ABOUTBOX)\n\t{\n\t\tCAboutDlg dlgAbout;\n\t\tdlgAbout.DoModal();\n\t}\n\telse\n\t{\n\t\tCDialog::OnSysCommand(nID, lParam);\n\t}\n}\n\n// If you add a minimize button to your dialog, you will need the code below\n//  to draw the icon.  For MFC applications using the document/view model,\n//  this is automatically done for you by the framework.\n\nvoid CMy1Dlg::OnPaint() \n{\n\tif (IsIconic())\n\t{\n\t\tCPaintDC dc(this); // device context for painting\n\n\t\tSendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);\n\n\t\t// Center icon in client rectangle\n\t\tint cxIcon = GetSystemMetrics(SM_CXICON);\n\t\tint cyIcon = GetSystemMetrics(SM_CYICON);\n\t\tCRect rect;\n\t\tGetClientRect(&rect);\n\t\tint x = (rect.Width() - cxIcon + 1) / 2;\n\t\tint y = (rect.Height() - cyIcon + 1) / 2;\n\n\t\t// Draw the icon\n\t\tdc.DrawIcon(x, y, m_hIcon);\n\t}\n\telse\n\t{\n\t\tCDialog::OnPaint();\n\t}\n}\n\n// The system calls this to obtain the cursor to display while the user drags\n//  the minimized window.\nHCURSOR CMy1Dlg::OnQueryDragIcon()\n{\n\treturn (HCURSOR) m_hIcon;\n}\n\nvoid CMy1Dlg::OnButton1() \n{\n\tUpdateData(1);\n\tCString currentStr=\"1\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\n\tUpdateData(0);\n}\n\nvoid CMy1Dlg::OnButton2() \n{\n\tUpdateData(1);\n\tCString currentStr=\"2\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\n\t\n}\n\n\n\t\n\n\nvoid CMy1Dlg::OnButton3() \n{\n\tUpdateData(1);\n\tCString currentStr=\"3\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\n\t\n}\n\nvoid CMy1Dlg::OnButton4() \n{\n\tUpdateData(1);\n\tCString currentStr=\"4\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnButton5() \n{\n\tUpdateData(1);\n\tCString currentStr=\"5\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\n\t\n}\n\nvoid CMy1Dlg::OnButton6() \n{\n\tUpdateData(1);\n\tCString currentStr=\"6\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnButton7() \n{\n\tUpdateData(1);\n\tCString currentStr=\"7\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnButton8() \n{\n\tUpdateData(1);\n\tCString currentStr=\"8\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnButton9() \n{\n\tUpdateData(1);\n\tCString currentStr=\"9\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnButton0() \n{\n\tUpdateData(1);\n\tCString currentStr=\"0\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnBUTTONpoint() \n{\n\tUpdateData(1);\n\tCString currentStr=\".\";\n\n\n\tif(isfirst)\n\t{\n\t\tm_var1=m_var1+currentStr;\n\t}\n\telse\n\t{\n\t\tm_var2=m_var2+currentStr;\n\t}\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnBUTTONequal() \n{\n\tdouble a,b;\n\ta = atof(m_var1); \n    b = atof(m_var2); \n\tm_var2=\"\";\n\n\tswitch(calc_sign){\n\t\n\tcase 0:\n\t\tm_result=a+b;\n\t\tbreak;\n\n\tcase 1:\n\t  \tm_result=a-b;\n\t\tbreak;\n\n\tcase 2:\n\t  \tm_result=a*b;\n\t\tbreak;\n\n\tcase 3:\n\t\tif(b==0){\n\t\tm_result=0;\n\t\tMessageBox(\"除数不能为0！\"); \n\t\t}else{\n\t  \tm_result=a/b;\n\t\t}\n\n\t\tbreak;\n\t}\n\n\tm_var1.Format(_T(\"%f\"),m_result);\n\t\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnBUTTONplus() \n{\n\tisfirst=false;\n\n\tcalc_sign=0;\n}\n\nvoid CMy1Dlg::OnBUTTONminus() \n{\n\tisfirst=false;\n\n\tcalc_sign=1;\n\t\n}\n\nvoid CMy1Dlg::OnBUTTONmultiply() \n{\n\tisfirst=false;\n\n\tcalc_sign=2;\t\n}\n\nvoid CMy1Dlg::OnBUTTONdivide() \n{\n\tisfirst=false;\n\n\tcalc_sign=3;\t\n}\n\nvoid CMy1Dlg::OnBUTTONpf() \n{\n\tdouble res;\n\tres=atof(m_var1); \n\tm_result=res*res;\n\tm_var1.Format(_T(\"%f\"),m_result);\n\n\n\tisfirst=true;\n\tUpdateData(0);\t\n}\n\nvoid CMy1Dlg::OnBUTTONsqrt() \n{\n\tdouble res;\n\tres=atof(m_var1); \n\tm_result=sqrt(res);\n\tm_var1.Format(_T(\"%f\"),m_result);\n\n\n\tisfirst=true;\n\tUpdateData(0);\n\n}\n\n\nvoid CMy1Dlg::OnBUTTONsin() \n{\n\n\tdouble res;\n\tres=atof(m_var1); \t\n    m_result=sin((res/180)*M_PI);\n\tm_var1.Format(_T(\"%f\"),m_result);\n\t\n\tisfirst=true;\n\tUpdateData(0);\n\t\n}\n\nvoid CMy1Dlg::OnBUTTONcos() \n{\n\tdouble res;\n\tres=atof(m_var1); \t\n    m_result=cos((res/180)*M_PI);\n\tm_var1.Format(_T(\"%f\"),m_result);\n\t\n\t\n\tisfirst=true;\n\tUpdateData(0);\n\t\n}\n\nvoid CMy1Dlg::OnBUTTONtan() \n{\n\tdouble res;\n\tres=atof(m_var1); \t\n    m_result=tan((res/180)*M_PI);\n\tm_var1.Format(_T(\"%f\"),m_result);\n\t\n\n\tisfirst=true;\n\tUpdateData(0);\n\t\n}\n\nvoid CMy1Dlg::OnBUTTONc() \n{\n  m_var1=\"\";\n  m_var2=\"\";\n  m_result=0;\n  isfirst=true;\n  UpdateData(0);\n}\n\n\n\nvoid CMy1Dlg::OnRadioB() \n{\n\n\n\n\tGetDlgItem(IDC_BUTTON_0)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_2)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_3)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_4)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_5)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_6)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_7)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_8)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_9)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__A)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__B)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__C)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__D)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__E)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__F)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_point)->EnableWindow(FALSE);\n//\tGetDlgItem(IDC_BUTTON_point)->EnableWindow(FALSE);\n\t\n\n\t\n\tGetDlgItem(IDC_BUTTON_plus)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_minus)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_multiply)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_divide)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_sin)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_cos)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_tan)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_pf)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_sqrt)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_equal)->EnableWindow(FALSE);\n\n\n//转换\n\tTransform(2);\n\tcurrent_dec=2;\n\n}\n\nvoid CMy1Dlg::OnRadioD() \n{\n\tGetDlgItem(IDC_BUTTON_0)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_2)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_3)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_4)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_5)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_6)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_7)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_8)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_9)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__A)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__B)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__C)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__D)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__E)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__F)->EnableWindow(FALSE);\t\n\tGetDlgItem(IDC_BUTTON_point)->EnableWindow(TRUE);\n\t\n\tTransform(10);\n\tcurrent_dec=10;\n}\n\nvoid CMy1Dlg::OnRadioO() \n{\n\tGetDlgItem(IDC_BUTTON_0)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_2)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_3)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_4)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_5)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_6)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_7)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_8)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_9)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__A)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__B)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__C)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__D)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__E)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON__F)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_point)->EnableWindow(FALSE);\n\n\t\n\tGetDlgItem(IDC_BUTTON_plus)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_minus)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_multiply)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_divide)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_sin)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_cos)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_tan)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_pf)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_sqrt)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_equal)->EnableWindow(FALSE);\n\n\tTransform(8);\n\tcurrent_dec=8;\n}\n\nvoid CMy1Dlg::OnRadioH() \n{\n\tGetDlgItem(IDC_BUTTON_0)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_2)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_3)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_4)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_5)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_6)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_7)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_8)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_9)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__A)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__B)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__C)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__D)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__E)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON__F)->EnableWindow(TRUE);\n\tGetDlgItem(IDC_BUTTON_point)->EnableWindow(FALSE);\n\n\tGetDlgItem(IDC_BUTTON_plus)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_minus)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_multiply)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_divide)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_sin)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_cos)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_tan)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_pf)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_sqrt)->EnableWindow(FALSE);\n\tGetDlgItem(IDC_BUTTON_equal)->EnableWindow(FALSE);\n\n\tTransform(16);\n\tcurrent_dec=16;\n\t\n}\n\n\nCString DecToBin(CString strDec)\n{\n\tint nDec = atoi(strDec);\n\tint nYushu, nShang;\n\tCString strBin = _T(\"\"), strTemp;\n\tTCHAR buf[2];\n\tBOOL bContinue = TRUE;\n\twhile ( bContinue )\n\t{\n\t\tnYushu = nDec % 2;\n\t\tnShang = nDec / 2;\n\t\tsprintf(buf, \"%d\", nYushu);\n\t\tstrTemp = strBin;\n\t\tstrBin.Format(\"%s%s\", buf, strTemp);\n\t\tnDec = nShang;\n\t\tif ( nShang == 0 )\n\t\t\tbContinue = FALSE;\n\t}\n\tint nTemp = strBin.GetLength()%4;\n\tswitch(nTemp)\n\t{\n\t\tcase 1:\n\t\tstrTemp.Format(_T(\"000%s\"), strBin);\n\t\tstrBin = strTemp;\n\t\tbreak;\n\t\tcase 2:\n\t\tstrTemp.Format(_T(\"00%s\"), strBin);\n\t\tstrBin = strTemp;\n\t\tbreak;\n\t\tcase 3:\n\t\tstrTemp.Format(_T(\"0%s\"), strBin);\n\t\tstrBin = strTemp;\n\t\tbreak;\n\t\tdefault:\n\t\tbreak;\n\t}\n\treturn strBin;\n}\n\n\nCString BinToDec(CString strBin)\n{\n\t\tCString strDec;\n\t\tlong nDec = 0, nLen;\n\t\tint i, j, k;\n\t\tnLen = strBin.GetLength();\n\t\tfor (i=0; i<nLen; i++)\n\t\t{\n\t\t\tif ( strBin[nLen-i-1] == '0' )\n\t\t\tcontinue;\n\t\t\telse\n\t\t\t{\n\t\t\t\tk = 1;\n\t\t\t\tfor(j=0; j<i; j++)\n\t\t\t\tk = k * 2;\n\t\t\t\tnDec += k;\n\t\t\t}\n\t\t}\n\t\tstrDec.Format(\"%ld\", nDec);\n\t\treturn strDec;\n}\n\n\nCString EightDec(CString Value)//8到10\n{\n\tint nEight = 0,Dec = 0;\n\tint len = 1,m,n;\n\tint temp=1;\n    len = Value.GetLength();\n\tn = len;\n\tfor (int i = 0; i < len; ++i)\n\t{\n\t\tnEight = Value[i]-'0';\n\t\ttemp = 1;\n\t\tm = n;\n\t\twhile (m-1)\n\t\t{\n\t\t\ttemp *= 8;\n\t\t\tm--;\n\t\t}\n\t\tDec += nEight*temp;\n\t\tn--;\n\t}\n\tValue.Format(\"%d\",Dec);\n\treturn Value;\n}\n\n\n\nvoid CMy1Dlg::Transform(int aim_dec){\n\t\n\tswitch(current_dec)\n\t{\n\tcase 2:\n\t\tswitch(aim_dec)\n\t\t{\n\t\t\tcase 2:\n\t\t\tbreak;\n\t\t\tcase 8:\n\t\t\t{\n\t\t\t\tm_var1 =BinToDec(m_var1);\n\t\t\t\tint a_10;\n\t\t\t\tchar b_10[33];\n\t\t\t\ta_10 =(int) atof(m_var1); \n\t\t\t\tltoa(a_10,b_10,8);\n\t\t\t\tm_var1=b_10;\n\t\t\t}\n\t\t\tbreak;\n\t\t\tcase 10:\n\t\t\t\tm_var1 =BinToDec(m_var1);\n\t\t\t\tbreak;\n\t\t\tcase 16:\n\t\t\t\tCString strDec, strHex;\n\t\t\t    strDec = BinToDec(m_var1);\n\t\t\t    int nDec;\n\t\t\t    nDec = atol(strDec);\n\t\t\t\tm_var1.Format(_T(\"%x\"), nDec);\n\t\t\t\tbreak;\n\t\t}\n\t\tbreak;\n\tcase 8:\n\t\tswitch(aim_dec)\n\t\t{\n\t\t\tcase 8:\n\t\t\tbreak;\n\t\t\t\n\t\t\tcase 2:\n\t\t\t{\n\t\t\t\tm_var1=EightDec(m_var1);\n\t\t\t\tint a_10;\n\t\t\t\tchar b_10[33];\n\t\t\t\ta_10 =(int) atof(m_var1);\n\t\t\t\tltoa(a_10,b_10,2);\n\t\t\t\tm_var1=b_10;\t\n\t\t\t}\n\n\t\t\tbreak;\n\n\t\t\tcase 10:\n\t\t\tm_var1=EightDec(m_var1);\n\t\t\tbreak;\n\n\t\t\tcase 16:\n\t\t\t{\n\t\t\t\tm_var1=EightDec(m_var1);\n\t\t\t\tint a_10;\n\t\t\t\tchar b_10[33];\n\t\t\t\ta_10 =(int) atof(m_var1);\n\t\t\t\tltoa(a_10,b_10,16);\n\t\t\t\tm_var1=b_10;\t\n\t\t\t}\n\t\t\tbreak;\n\t\t}\n\t\tbreak;\n\tcase 10:\n\t\tint a_10;\n\t\tchar b_10[33];\n\t\ta_10 =(int) atof(m_var1); \n\t\tswitch(aim_dec){\n\t\t\tcase 10:\n\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\t\tltoa(a_10,b_10,2);\n\t\t\t\tm_var1=b_10;\n\t\t\t\tbreak;\n\t\t\tcase 8:\n\t\t\t\tltoa(a_10,b_10,8);\n\t\t\t\tm_var1=b_10;\n\t\t\t\tbreak;\n\t\t\tcase 16:\n\t\t\t\tltoa(a_10,b_10,16);\n\t\t\t\tm_var1=b_10;\n\t\t\t\tbreak;\n\t\t}\n\t\t\t\n\t\tbreak;\n\tcase 16:\n\t\tchar a_16[9];\n\t\tint b_16;\n\t\tstrcpy(a_16,m_var1);\n\t\tswitch(aim_dec){\n\t\t\tcase 16:\n\t\t\tbreak;\n\t\t\t\n\t\t\tcase 8:\n\t\t\t{\n\t\t\t\tsscanf(a_16,\"%x\",&b_16);\n\t\t\t\tm_var1.Format(\"%d\", b_16);\n\t\t\t\tint a_10;\n\t\t\t\tchar b_10[33];\n\t\t\t\ta_10 =(int) atof(m_var1); \n\t\t\t\tltoa(a_10,b_10,8);\n\t\t\t\tm_var1=b_10;\n\t\t\t}\n\n\t\t\tbreak;\n\n\t\t\tcase 10:\n\t\t\tsscanf(a_16,\"%x\",&b_16);\n\t\t\tm_var1.Format(\"%d\", b_16);\n\t\t\tbreak;\n\n\t\t\tcase 2:\n\t\t\t\tsscanf(a_16,\"%x\",&b_16);\n\t\t\t\tm_var1.Format(\"%d\", b_16);\n\t\t\t\tint a_10;\n\t\t\t\tchar b_10[33];\n\t\t\t\ta_10 =(int) atof(m_var1); \n\t\t\t\tltoa(a_10,b_10,2);\n\t\t\t\tm_var1=b_10;\n\t\t\tbreak;\n\t\t}\n\t\tbreak;\n\t}\n\tUpdateData(0);\n}\n",
+			"settings":
+			{
+				"buffer_size": 17305,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Administrator/Desktop/PlayerInfo.cs",
+			"settings":
+			{
+				"buffer_size": 12376,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "CString BinToDec(CString strBin)\n{\n\t\tCString strDec;\n\t\tlong nDec = 0, nLen;\n\t\tint i, j, k;\n\t\tnLen = strBin.GetLength();\n\t\tfor (i=0; i<nLen; i++)\n\t\t{\n\t\t\tif ( strBin[nLen-i-1] == '0' )\n\t\t\tcontinue;\n\t\t\telse\n\t\t\t{\n\t\t\t\tk = 1;\n\t\t\t\tfor(j=0; j<i; j++)\n\t\t\t\tk = k * 2;\n\t\t\t\tnDec += k;\n\t\t\t}\n\t\t}\n\t\tstrDec.Format(\"%ld\", nDec);\n\t\treturn strDec;\n}",
+			"settings":
+			{
+				"buffer_size": 330,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "11.1，CString转double: atof()\n\n11.2.double转CString:\n\nm_strCookie.Format(\"%.3lf\",m_douFirst); \n\n",
+			"settings":
+			{
+				"buffer_size": 93,
+				"line_ending": "Windows",
+				"name": "11.1，CString转double: atof()"
+			}
+		}
+	],
+	"build_system": "Packages/C++/C++ Single File.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "ssc",
+		"selected_items":
+		[
+			[
+				"ssc",
+				"Set Syntax: C"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"gut add",
+				"Git: Quick Add"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"sspy",
+				"Set Syntax: Python"
+			],
+			[
+				"pac",
+				"Package Control: List Packages"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"pins",
+				"Package Control: Install Package"
+			],
+			[
+				"contrin",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"packinst",
+				"Package Control: Install Package"
+			],
+			[
+				"git  stat",
+				"Git: Status"
+			],
+			[
+				"git l",
+				"Git: Log"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"gitsta",
+				"Set Syntax: SublimeGit Status"
+			],
+			[
+				"git p",
+				"Git: Push"
+			],
+			[
+				"gitcom",
+				"Git: Commit"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git ini",
+				"Git: Init"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"pack",
+				"Install Package Control"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"git add .",
+			"a=Nint()",
+			".",
+			"a=A()",
+			"settings syntax",
+			"clear",
+			"apm install activate-power-mode",
+			"hello",
+			"fuck",
+			"....",
+			"...",
+			".",
+			"..",
+			"exit",
+			"git clone https://github.com/JoelBesada/activate-power-mode.git cd activate-power-mode",
+			"cd ..",
+			"cd",
+			"dir",
+			"help",
+			"exit()",
+			"dir",
+			"cd .atom/packages",
+			"exit",
+			"git add",
+			".."
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/Unity3D_Project/TaiDouARPG/Assets",
+		"/E/Unity3D_Project/TaiDouARPG/Assets/Scrips"
+	],
+	"file_history":
+	[
+		"/E/Unity3D_Project/ParkourPro/GAME/ParkourGame/Assets/Scrips/AudioController.cs",
+		"/E/Unity3D_Project/ParkourPro/GAME/ParkourGame/Assets/Scrips/MainScene/GameController.cs",
+		"/C/Users/Administrator/Desktop/贪吃蛇设计.txt",
+		"/C/Users/Administrator/Desktop/Python/timer",
+		"/C/Users/Administrator/Desktop/Python/word_compare.py",
+		"/C/Users/Administrator/Desktop/Fish-v318-1106/kpdf/基于Spark的推荐系统的设计与实现.txt",
+		"/C/Users/Administrator/Desktop/Python/word_compare",
+		"/C/Users/Administrator/Desktop/Python/argcount.py",
+		"/C/Users/Administrator/Desktop/Python/argcount",
+		"/C/Users/Administrator/Desktop/Python/static2.py",
+		"/C/Users/Administrator/Desktop/Python/static.py",
+		"/C/Users/Administrator/Desktop/Python/super.py",
+		"/C/Users/Administrator/Desktop/Python/str_calc.py",
+		"/C/Users/Administrator/Desktop/Python/shift.py",
+		"/C/Users/Administrator/Desktop/Python/substr.py",
+		"/C/Users/Administrator/Desktop/Python/C2F.py",
+		"/C/Users/Administrator/Desktop/Python/int2asc.py",
+		"/C/Users/Administrator/Desktop/Python/C2F",
+		"/C/Users/Administrator/Desktop/Python/_new_.py",
+		"/C/Users/Administrator/Desktop/Python/fileobj.py",
+		"/C/Users/Administrator/Desktop/Python/fileobj",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/python3.sublime-build",
+		"/E/Unity3D_Project/TaiDouARPG/TaiDouARPG.sublime-project",
+		"/E/Unity3D_Project/TaiDouARPG/TaiDouARPG.sln",
+		"/E/Unity3D_Project/TaiDouARPG/Assets/Scrips/main-menu/Inventory.cs",
+		"/E/Unity3D_Project/TaiDouARPG/Assets/Scrips/main-menu/InventoryManager.cs",
+		"/E/Unity3D_Project/TaiDouARPG/Assets/Model/Boy/villarger_B_Boy/scripts/cameraViewObject.js",
+		"/E/Unity3D_Project/TaiDouARPG/Assets/NGUI/Scripts/Interaction/UIToggledObjects.cs",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/OmniSharpSublime.sublime-settings",
+		"/C/Users/Administrator/Desktop/Python/firstgame.py",
+		"/C/Users/Administrator/Desktop/Python/easy.py",
+		"/E/Unity3D_Project/TaiDouARPG/Assets/Scrips/main-menu/GameController.cs",
+		"/C/Users/Administrator/Desktop/Python/hello.py",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/SublimeGit/Default (Windows).sublime-keymap",
+		"/C/Users/Administrator/Documents/Tencent Files/296056428/FileRecv/test.py",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Default.sublime-keymap",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/ExpandRegion/ExpandRegion.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/Jedi - Python autocompletion/sublime_jedi.sublime-settings",
+		"/D/Sublime Text 3/sublime.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"damage",
+			"InitHPDamagePower",
+			"itoa",
+			"nDec",
+			"strDec",
+			"newfood",
+			"nodeval",
+			"addhead",
+			"eatf",
+			"timer",
+			"drawsn",
+			"AddHead",
+			"gamebeg",
+			"Invalidate",
+			"moveto",
+			"GameBegin",
+			"m_nElapse",
+			"TAIL",
+			"m_snakeHead",
+			"DrawSnake",
+			"a1",
+			"Nstr",
+			"(A",
+			"new",
+			"son",
+			"\\",
+			"AppData",
+			"\\",
+			"a",
+			"lock_mouse",
+			"lock_mouse_thread",
+			"__name__",
+			"Thread",
+			"threading",
+			"a",
+			"r",
+			"i",
+			"lock",
+			"import"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								17305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 15479.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Administrator/Desktop/PlayerInfo.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12376,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 285.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 330,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 93,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								93,
+								93
+							]
+						],
+						"settings":
+						{
+							"auto_name": "11.1，CString转double: atof()",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 201.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-commit":
+	{
+		"height": 124.0
+	},
+	"output.git-init":
+	{
+		"height": 124.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 124.0
+	},
+	"pinned_build_system": "",
+	"project": "TaiDouARPG.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Sublime Text 3\\sublime.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 270.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

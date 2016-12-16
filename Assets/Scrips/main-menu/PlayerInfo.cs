@@ -11,6 +11,9 @@ public enum InfoType {
     Coin,
     Energy,
     Toughen,
+    HP,
+    Damage,
+    Equip,
     All
 }
 
@@ -20,15 +23,18 @@ public class PlayerInfo : MonoBehaviour {
 
 
     #region property
+
     private string _name;
     private string _headPortrait;
     private int _level = 1;
     private int _power = 1;
     private int _exp = 0;
-    private int _diamond ;
+    private int _diamond;
     private int _coin;
     private int _energy;
     private int _toughen;
+    private int _hp;
+    private int _damage;
     #endregion
 
     public float energyTimer = 0;
@@ -112,6 +118,23 @@ public class PlayerInfo : MonoBehaviour {
             _toughen = value;
         }
     }
+
+    public int HP
+    {
+        get
+        {
+            return _hp;
+        }
+        set
+        {
+            _hp = value;
+        }
+    }
+    public int Damage
+    {
+        get { return _damage; }
+        set { _damage = value; }
+    }
     #endregion
     #region unity event
     void Awake() {
@@ -156,10 +179,41 @@ public class PlayerInfo : MonoBehaviour {
         this.HeadPortrait = "头像底板女性";
         this.Level = 12;
         this.Name="千颂伊";
-        this.Power = 1745;
         this.Toughen = 34;
+
+        InitHPDamagePower();
         OnPlayerInfoChanged( InfoType.All );
     }
+
+    void InitHPDamagePower()
+    {
+        this.HP = this.Level * 100;
+        this.Damage = this.Level * 50;
+        this.Power = this.HP + this.Damage;
+
+    }
+
+
+    void PutonEquip(int id)
+    {
+        if (id == 0) return;
+        Inventory inventory = null;
+        bool isExit = InventoryManager._instance.inventoryDict.TryGetValue(id, out inventory);
+
+        this.HP += inventory.HP;
+        this.Damage += inventory.Damage;
+        this.Power += inventory.Power;
+    }
+    void PutoffEquip(int id)
+    {
+        if (id == 0) return;
+        Inventory inventory = null;
+        InventoryManager._instance.inventoryDict.TryGetValue(id, out inventory);
+        this.HP -= inventory.HP;
+        this.Damage -= inventory.Damage;
+        this.Power -= inventory.Power;
+    }
+
 
     public void ChangeName(string newname)
     {
