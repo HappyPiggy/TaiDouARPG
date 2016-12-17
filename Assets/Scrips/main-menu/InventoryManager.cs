@@ -24,7 +24,8 @@ public class InventoryManager : MonoBehaviour {
     void ReadInventoryInfo() {
         string str = listinfo.ToString();
         string[] itemStrArray = str.Split('\n');
-        foreach (string itemStr in itemStrArray) {
+        foreach (string itemStr in itemStrArray)
+        {
             //ID 名称 图标 类型（Equip，Drug） 装备类型(Helm,Cloth,Weapon,Shoes,Necklace,Bracelet,Ring,Wing) 售价 星级 品质 伤害 生命 战斗力 作用类型 作用值 描述
             string[] proArray = itemStr.Split('|');
             Inventory inventory = new Inventory();
@@ -71,7 +72,7 @@ public class InventoryManager : MonoBehaviour {
                 }
 
             }
-            //print(itemStr);
+           
             //售价 星级 品质 伤害 生命 战斗力 作用类型 作用值 描述
             inventory.Price = int.Parse( proArray[5] );
             if (inventory.InventoryTYPE == InventoryType.Equip) {
@@ -86,6 +87,9 @@ public class InventoryManager : MonoBehaviour {
             }
             inventory.Des = proArray[13];
             inventoryDict.Add(inventory.ID, inventory);
+
+
+           // print(itemStr);
         }
     }
     //完成角色背包信息的初始化，获得拥有的物品
@@ -123,7 +127,7 @@ public class InventoryManager : MonoBehaviour {
                 }
             }
         }
-        OnInventoryChange();
+      //  OnInventoryChange();
     }
 
     public void RemoveInventoryItem( InventoryItem it ) {

@@ -45,7 +45,7 @@ public class PlayerInfo : MonoBehaviour {
     public delegate void OnPlayerInfoChangedEvent( InfoType type );
     public event OnPlayerInfoChangedEvent   OnPlayerInfoChanged;
 
-    #region get set methd
+    #region get set method
     public string Name {
         get {
             return _name;
@@ -191,6 +191,10 @@ public class PlayerInfo : MonoBehaviour {
         this.Damage = this.Level * 50;
         this.Power = this.HP + this.Damage;
 
+
+        //测试 人物穿上equip后的加能力效果
+        PutoffEquip(1001);
+        PutoffEquip(1002);
     }
 
 
